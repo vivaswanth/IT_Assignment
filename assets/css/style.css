@@ -1,0 +1,67 @@
+.form-box{
+    margin-top: 10%;
+    margin-left: 30%;
+}
+.top-content .text {
+    padding-top: 120px;
+    color: #fff;
+}
+
+.top-content .text h1 { color: #fff; }
+
+.top-content .description {
+    margin: 20px 0 10px 0;
+}
+
+.top-content .description p { opacity: 0.8; }
+
+.top-content .top-big-link {
+    margin-top: 35px;
+}
+
+.form-top {
+    overflow: hidden;
+    padding: 0 25px 15px 25px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.form-top-left {
+    float: left;
+    width: 75%;
+    padding-top: 25px;
+}
+
+.form-top-left h3 { margin-top: 0; }
+
+.form-top-right {
+    float: left;
+    width: 25%;
+    padding-top: 5px;
+    font-size: 70px;
+    color: #eee;
+    line-height: 100px;
+    text-align: right;
+}
+
+.form-bottom {
+    padding: 25px 25px 30px 25px;
+    background: #eee;
+    text-align: left;
+}
+
+.form-bottom form textarea {
+    height: 100px;
+}
+
+.form-bottom form .form-links {
+    display: inline-block;
+    width: 275px;
+    text-align: right;
+    vertical-align: top;
+}
+
+.form-bottom form .form-links a { color: #888; }
+.form-bottom form .form-links a:hover, 
+.form-bottom form .form-links a:focus { color: #888; border-bottom: 1px dotted #888; }
