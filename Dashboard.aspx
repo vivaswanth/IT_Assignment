@@ -48,9 +48,20 @@
                     </div>
                 </div>
             </nav>
+
         <div class="container card col-md-12" style="margin-top:5%">
             <div class="row">
-                <asp:Panel runat="server" ID="panel1" CssClass="col-md-6">
+                <asp:RadioButtonList ID="rbl1" runat="server" Height="18px" Width="160px" RepeatDirection="Horizontal" AutoPostBack="true" OnSelectedIndexChanged="rbl1_SelectedIndexChanged">
+                    <asp:ListItem> View Bills </asp:ListItem>
+                    <asp:ListItem> New Orders </asp:ListItem>
+                </asp:RadioButtonList>
+                
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                
+                <asp:Panel runat="server" ID="panel1">
+                    <div class="col-md-6">
                     <h2>New Orders</h2>
                     <asp:SqlDataSource ID="sql1" runat="server" ConnectionString="<%$ ConnectionStrings:constring %>" SelectCommand="Select Distinct(Ptype) from Products"></asp:SqlDataSource>
                     <asp:SqlDataSource ID="Sql2" runat="server" ConnectionString="<%$ ConnectionStrings:constring %>" SelectCommand="Select Pname from Products where Ptype = @ptype1">
@@ -64,6 +75,10 @@
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <asp:SqlDataSource ID="Sql4" runat="server" ConnectionString="<%$ ConnectionStrings:constring %>" SelectCommand="Select * from Sales"></asp:SqlDataSource>
+                    <!--<div
+                        <asp:Label ID="lblTime" runat="server" />
+                        <asp:Timer runat="server" ID="timer" OnTick="Get_time" Interval="1000"></asp:Timer>
+                    </div>-->
                     <div class="form-group label-floating has-primary col-md-6">
 				        <label class="control-label">Enter Customer Name</label>
                         <asp:TextBox runat="server" ID="CName" type="text" CssClass="form-control"></asp:TextBox>
@@ -75,13 +90,13 @@
 			        </div>
 
                     <div class="form-group label-floating has-primary col-md-6">
-                        <asp:DropDownList runat="server" ID="item1" type="text" CssClass="form-control" DataSourceID="sql1" DataTextField="Ptype" AppendDataBoundItems = "true" AutoPostBack="true">
+                        <asp:DropDownList runat="server" ID="item1" type="text" CssClass="form-control" DataSourceID="sql1" DataTextField="Ptype" AppendDataBoundItems = "true" AutoPostBack="true" EnableViewState="true">
                             <asp:ListItem Text="Please select" Value="" />
                         </asp:DropDownList>
 			        </div>
 
                     <div class="form-group label-floating has-primary col-md-6">
-                        <asp:DropDownList runat="server" ID="item2" type="text" CssClass="form-control" DataSourceID="sql1" DataTextField="Ptype" AppendDataBoundItems = "true" AutoPostBack="true">
+                        <asp:DropDownList runat="server" ID="item2" type="text" CssClass="form-control" DataSourceID="sql1" DataTextField="Ptype" AppendDataBoundItems = "true" AutoPostBack="true" EnableViewState="true">
                             <asp:ListItem Text="Please select" Value="" />
                         </asp:DropDownList>
 			        </div>
@@ -114,20 +129,28 @@
 
                     <asp:Button runat="server" ID="bill" CssClass="btn btn-primary" Text="Show bill" OnClick="display_price"/>
                     <asp:Button runat="server" ID="submit" CssClass="btn btn-success" Text="Payment done" OnClick="payment_done"/>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h2>Issue Bills</h2>
+                        <h3 class="text-center">Summary of order - Bill</h3>
+                        <asp:Label runat="server" ID="lbl1"></asp:Label>
+                    </div>
                 </asp:Panel>
 
-                <asp:Panel runat="server" ID="panel2" CssClass="col-md-6">
-                    <h2>Issue Bills</h2>
-                    <h3 class="text-center">Summary of order - Bill</h3>
-                    <asp:Label runat="server" ID="lbl1"></asp:Label>
+                <asp:Panel runat="server" ID="panel2" CssClass="col-md-8">
+                    <div class="container card margin">
+                        <h2>Past orders</h2>
+                        <asp:GridView runat="server" AllowPaging="true" PageSize="5" CssClass="table table-bordered table-striped" ID="grid1" AutoGenerateColumns="true" DataSourceID="sql4" EnableSortingAndPagingCallbacks="true"></asp:GridView>
+                    </div>            
                 </asp:Panel>
+
+                </ContentTemplate>
+                </asp:UpdatePanel>
             </div>           
         </div>
         
-        <div class="container card margin">
-            <h2>Past orders</h2>
-            <asp:GridView runat="server" AllowPaging="true" PageSize="5" CssClass="table table-bordered table-striped" ID="grid1" AutoGenerateColumns="true" DataSourceID="sql4" EnableSortingAndPagingCallbacks="true"></asp:GridView>
-        </div>
+        
    
     </form>
 </body>

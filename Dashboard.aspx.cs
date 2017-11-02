@@ -24,7 +24,9 @@ public partial class Dashboard : System.Web.UI.Page
     {
         if(!IsPostBack)
         {
-            
+            panel1.Visible = true;
+            panel2.Visible = false;
+            //lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
         }
     }
 
@@ -102,5 +104,24 @@ public partial class Dashboard : System.Web.UI.Page
         {
             con.Close();
         }      
+    }
+
+    protected void Get_time(object sender, EventArgs e)
+    {
+        lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
+    }
+
+    protected void rbl1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (rbl1.SelectedIndex == 0)
+        {
+            panel2.Visible = true;
+            panel1.Visible = false;
+        }
+        else
+        {
+            panel1.Visible = true;
+            panel2.Visible = false;
+        }
     }
 }

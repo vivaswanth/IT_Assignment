@@ -26,7 +26,7 @@
 
 </head>
 
-<body class="signup-page" style="background-image: url(assets/img/banner.jpg); background-size: cover">
+<body class="signup-page" style="background-image: url(assets/img/cover.jpeg); background-size: cover">
 <form id="form1" runat="server">
 <div style="background-color: rgba(0,0,0,0.6);">
 	<nav class="navbar navbar-transparent navbar-absolute">
